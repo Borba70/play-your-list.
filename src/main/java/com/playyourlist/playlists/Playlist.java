@@ -1,0 +1,30 @@
+package com.playyourlist.playlists;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+@Entity
+@Table(name = "playlists")
+public class Playlist {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @NotBlank(message = "Nome é obrigatório e não pode ser vazio.")
+    @Size(max = 100, message = "Nome deve ter no máximo 100 caracteres.")
+    private String nome;
+
+    @Size(max = 255, message = "Descrição deve ter no máximo 255 caracteres.")
+    private String descricao;
+
+    public Playlist() {}
+
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+}
